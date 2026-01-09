@@ -6,13 +6,22 @@ import { useState } from 'react';
 
 const Navbar = ({setSearch}) => {
 
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState("");
+  const [value,setValue] = useState("")
 
-  const colourchnage=()=>{
+  const onclick=()=>{
 
-    setActive(true)
+    setSearch(value);
+  }
+
+  const colourchange=()=>{
+
+    setActive("movie")
     
 
+  }
+  const colourchange2=()=>{
+    setActive("home")
   }
 
 
@@ -21,19 +30,31 @@ const Navbar = ({setSearch}) => {
 
       <div className='flex  gap-0  '>
         <input 
-        onChange={(e)=>setSearch(e.target.value)}
-        className='bg-white border-l-2 w-xl rounded-l-lg h-10' type="text" />
+        onChange={(e)=>setValue(e.target.value)}
+        className='bg-white border-l-2 outline-0 w-xl p-3 rounded-l-lg h-10' type="text" />
 
-        <button className=' hover:bg-amber-700 bg-orange-300 rounded-r-lg w-15  '>Search</button>
+        <button onClick={onclick} className=' hover:bg-amber-700 bg-orange-300 rounded-r-lg w-15  '>Search</button>
 
 
       </div>
 
-      <Link to={'/movie'}><button  onClick={colourchnage}
-       className={` w-15 h-8 p-2 rounded-l transition ${active ? "bg-blue-400" :"bg-white "}
+      <div className='gap-4 flex '>
+
+      <Link to={'/movie'}><button  onClick={colourchange}
+       className={` w-20 h-10 p-2 rounded-xl  transition ${active ==="movie"? "bg-blue-400" :"bg-white "}
         `}
 
       >Movie</button></Link>
+
+
+
+        <Link to={'/'}><button  onClick={colourchange2}
+       className={` w-20 h-10 p-2 rounded-xl  transition ${active ==="home"? "bg-blue-400" :"bg-white "}
+        `}
+
+      >Home</button></Link>
+
+      </div>
 
 
 
