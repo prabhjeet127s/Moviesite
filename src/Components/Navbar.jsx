@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import Footer from './Footer';
 
 
 
@@ -24,9 +25,13 @@ const Navbar = ({setSearch}) => {
     setActive("home")
   }
 
+  const colourchange3=()=>{
+    setActive("favourite")
+  }
+
 
   return (
-    <div className='w-full  flex gap-150 pt-5 pl-8 p-5 bg-black'>
+    <div className='w-full  flex justify-between pt-5 pl-8 p-5 bg-black'>
 
       <div className='flex  gap-0  '>
         <input 
@@ -38,7 +43,7 @@ const Navbar = ({setSearch}) => {
 
       </div>
 
-      <div className='gap-4 flex '>
+      <div className='gap-4 flex overflow-hidden  '>
 
       <Link to={'/movie'}><button  onClick={colourchange}
        className={` w-20 h-10 p-2 rounded-xl  transition ${active ==="movie"? "bg-blue-400" :"bg-white "}
@@ -54,6 +59,14 @@ const Navbar = ({setSearch}) => {
 
       >Home</button></Link>
 
+
+      <Link to={'/favourite'}><button  onClick={colourchange3}
+       className={` w-20 h-10 p-2 rounded-xl ${active==="favourite" ?"bg-blue-400" : "bg-white"} transition"}
+        `}
+
+      >Favourite</button></Link>
+
+
       </div>
 
 
@@ -61,6 +74,11 @@ const Navbar = ({setSearch}) => {
 
 
     </div>
+
+    
+
+
+
   )
 }
 
